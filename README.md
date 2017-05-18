@@ -1,5 +1,5 @@
 # Qmljsify
-Convert an NPM package into a QML friendly file
+Convert an NPM package into a QML friendly JavaScript file
 
 It is still a prototype software. Use it at your own risk.
 
