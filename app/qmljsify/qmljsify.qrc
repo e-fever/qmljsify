@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Qmljsify/templates/webpack.config.js</file>
+        <file>Qmljsify/templates/index.js</file>
+        <file>Qmljsify/wrappercreator.js</file>
+        <file>Qmljsify/WrapperCreator.qml</file>
+        <file>Qmljsify/templates/package.json</file>
+    </qresource>
+</RCC>

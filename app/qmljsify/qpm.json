@@ -1,0 +1,10 @@
+{
+  "name": "",
+  "description": "",
+  "dependencies": [
+    "com.github.benlau.qtshell@0.4.2"
+  ],
+  "license": "NONE",
+  "pri_filename": "",
+  "webpage": ""
+}
