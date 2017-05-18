@@ -1,7 +1,7 @@
 # Qmljsify
-Convert a NPM package into a QML friendly file
+Convert an NPM package into a QML friendly file
 
-It is still a prototype software. Use it as your own risk.
+It is still a prototype software. Use it at your own risk.
 
 Build Instruction
 =================
@@ -47,7 +47,6 @@ import "./sprintf" as SPrintf
 
 // [snipped]
 SPrintf.sprintf("%d %d", 1 , 2);
-//
 ```
 
 Known Issues
@@ -64,15 +63,17 @@ Known Issues
 TroubleShooting
 ===============
 
+```
   $ qmljsify convert lodash
   qml: SyntaxError: Expected token `;'
-
+```
 Try --no-minify
 
+```
   $ qmljsify convert --no-minify lodash
-  lodash.orig.js  saved
-  lodash.js  saved
-
+  lodash.orig.js saved
+  lodash.js saved
+```
 
 
 
