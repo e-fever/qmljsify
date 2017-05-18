@@ -52,8 +52,10 @@ Example:
 
 Then it will fetch `sprintf` from NPM and create two files
 
+```
   sprintf.orig.js # A compiled and minified sprintf library
-  sprintf.js # A Wrapper of the compiled sprintf library
+  sprintf.js # A Wrapper of the compiled sprintf library for QML
+```
 
 That is what `sprintf.js` looks like:
 
