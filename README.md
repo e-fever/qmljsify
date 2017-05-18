@@ -3,6 +3,12 @@ Convert an NPM package into a QML friendly JavaScript file
 
 It is still a prototype software. Use it at your own risk.
 
+**Proven Working Packages**
+
+    fecha (Lightweight version of moment)
+    lodash(--no-minify) 
+    sprintf
+
 Build Instruction
 =================
 
@@ -13,6 +19,8 @@ Build Instruction
   make 
   #Then copy qmljsify to your favor path
 ```
+
+p.s Windows is not working yet.
 
 Prerequisites
 =============
