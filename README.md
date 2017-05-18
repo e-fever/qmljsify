@@ -23,6 +23,22 @@ Usage
 =====
 
 ```
+Usage: qmljsify [options] command package
+qmljsify - Download and convert an NPM package to a QML friendly JavaScript file
+
+Options:
+  -h, --help   Displays this help.
+  --no-minify  Turn off JavaScript Compression
+
+Arguments:
+  command      Command [Available Commands: convert]
+  package      NPM package to be qmljsified
+```
+
+
+Example: 
+
+```
   qmljsify convert sprintf
 ```
 
