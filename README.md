@@ -20,8 +20,10 @@ You must have the `npm` and `webpack` binary be installed and searchable in PATH
 Usage
 =====
 
+```
   qmljsify convert sprintf
-  
+```
+
 Then it will fetch `sprintf` from NPM and create two files
 
   sprintf.orig.js # A compiled and minified sprintf library
@@ -31,7 +33,7 @@ That is what `sprintf.js` looks like:
 
 ```
 .pragma library
-Qt.include("sprintf-0.1.5.min.js")
+Qt.include("sprintf.orig.js")
 var object_stringify = QML.object_stringify;
 var format = QML.format;
 var cache = QML.cache;
