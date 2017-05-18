@@ -6,11 +6,13 @@ It is still a prototype software. Use it at your own risk.
 Build Instruction
 =================
 
+```
   cd app/qmljsify
   qpm install
   qmake
   make 
   #Then copy qmljsify to your favor path
+```
 
 Prerequisites
 =============
