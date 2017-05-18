@@ -73,7 +73,7 @@ var vsprintf = QML.vsprintf;
 Then you could use it in your QML file:
 
 ```
-import "./sprintf" as SPrintf
+import "./sprintf.js" as SPrintf
 
 // [snipped]
 SPrintf.sprintf("%d %d", 1 , 2);
