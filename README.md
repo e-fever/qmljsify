@@ -114,4 +114,15 @@ It is probably a problem in Qt's JavaScript engine.
 
 You may try to use `--no-minify`, if it is still not working and that package is small and tiny, please report to me. It may be used to investigate the problem
 
+Brainstorming
+------------
 
+Proposed features:
+
+1. --combine - Merge orig js and wrapper js into a single file. (It could be a solution of the bug of Qt.include)
+
+2. Handle library with only a single function
+
+3. --function name - Set the function name of library that only provide a single function
+
+4. Break down the "convert" function into multiple steps.
