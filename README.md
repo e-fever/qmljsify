@@ -65,6 +65,8 @@ Known Issues
 TroubleShooting
 ===============
 
+1) qml: SyntaxError: Expected token `;'
+
 ```
   $ qmljsify convert lodash
   qml: SyntaxError: Expected token `;'
@@ -77,5 +79,11 @@ Try --no-minify
   lodash.js saved
 ```
 
+2) SyntaxError: Expected token `identifier`
+
+Basically, I have no idea what may trigger this problem. 
+It is probably a problem in Qt's JavaScript engine.
+
+You may try to use `--no-minify`, if it is still not working and that package is small and tiny, please report to me. It may be used to investigate the problem
 
 
