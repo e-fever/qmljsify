@@ -109,4 +109,35 @@ void Tests::test_leftpad()
     QVERIFY(cat(js).indexOf("var leftPad") >= 0);
 }
 
+void Tests::test_lodashMerge()
+{
+    Qmljsify jsify;
+
+    QString buildFolder = realpath_strip(pwd(), "build");
+    QString outputFolder = pwd();
+
+    QString js = realpath_strip(pwd() , "lodash.merge.js");
+
+    QString package = "lodash.merge@4.0.0";
+
+    jsify.setMinifyEnabled(false);
+    jsify.setOutputFolder(outputFolder);
+
+    jsify.setBuildFolder(buildFolder);
+    jsify.parsePackageString(package);
+
+    QCOMPARE(jsify.package(), QString("lodash.merge"));
+    QCOMPARE(jsify.packageVersion(), QString("4.0.0"));
+
+    jsify.prepare();
+
+    jsify.fetch();
+
+    jsify.build();
+
+    jsify.create();
+
+    QVERIFY(cat(js).indexOf("var lodashMerge") >= 0);
+}
+
 

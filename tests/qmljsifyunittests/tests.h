@@ -17,5 +17,7 @@ private slots:
 
     void test_leftpad();
 
+    void test_lodashMerge();
+
 };
 

@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
 
     Qmljsify qmljsify;
     qmljsify.setBuildFolder(realpath_strip(pwd(), "build"));
-    qmljsify.setPackage(package);
+    qmljsify.parsePackageString(package);
     qmljsify.setOutputFolder(pwd());
     qmljsify.setMinifyEnabled(!noMinify);
 

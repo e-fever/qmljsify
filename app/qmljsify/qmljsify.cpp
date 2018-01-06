@@ -193,6 +193,25 @@ QString Qmljsify::normalizeFunctionName(const QString &package)
     return token.join("");
 }
 
+QString Qmljsify::packageVersion() const
+{
+    return m_packageVersion;
+}
+
+void Qmljsify::setPackageVersion(const QString &packageVersion)
+{
+    m_packageVersion = packageVersion;
+}
+
+void Qmljsify::parsePackageString(const QString &text)
+{
+    QStringList token = text.split("@");
+    setPackage(token[0]);
+    if (token.size() > 1) {
+        setPackageVersion(token[1]);
+    }
+}
+
 QString Qmljsify::package() const
 {
     return m_package;

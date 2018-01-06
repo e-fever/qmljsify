@@ -37,10 +37,18 @@ public:
 
     static QString normalizeFunctionName(const QString& package);
 
+    QString packageVersion() const;
+
+    void setPackageVersion(const QString &packageVersion);
+
+    void parsePackageString(const QString& text);
+
 private:
     QString m_buildFolder;
 
     QString m_package;
+
+    QString m_packageVersion;
 
     QString m_outputFolder;
 

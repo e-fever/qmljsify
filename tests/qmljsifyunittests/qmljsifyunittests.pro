@@ -17,6 +17,7 @@ include($$ROOTDIR/app/qmljsify/qmljsify.pri)
 DEFINES += QUICK_TEST_SOURCE_DIR=\\\"$$PWD/qmltests\\\"
 
 DISTFILES +=     qpm.json     qmltests/tst_QmlTests.qml \
+    ../../.travis.yml \
     samples/sprintf.js \
     samples/sprintf.min.js \
     samples/sprintf-0.1.5.min.js

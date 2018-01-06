@@ -2,10 +2,6 @@ language : cpp
 dist: trusty
 env:
   - DISPLAY=:99.0
-addons:
-  apt:
-    packages:
-    - valgrind
 compiler:
   - gcc
 before_install:
@@ -13,6 +9,7 @@ before_install:
     - export PATH=`pwd`/gosrc/bin:$PATH
     - go get qpm.io/qpm
     - sh -e /etc/init.d/xvfb start
+    - npm install -g webpack
 script:
     - git clone https://github.com/benlau/qtci.git
     - source qtci/path.env
