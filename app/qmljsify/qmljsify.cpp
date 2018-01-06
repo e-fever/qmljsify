@@ -19,7 +19,7 @@ static void writeToFile(QString file, QString content) {
 }
 
 static QString which(QString program) {
-    //@TODO : Fix it
+    //@TODO : Fix it. It doesn't work on windows
     QProcess process;
     QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
 
@@ -103,6 +103,9 @@ void Qmljsify::fetch()
 void Qmljsify::build()
 {
     QString webpack = which("webpack");
+    if (webpack.isEmpty()) {
+        qWarning() << "webpack command not found. Please check your PATH environment variable.";
+    }
     QStringList arguments;
 
     if (m_minifyEnabled) {
