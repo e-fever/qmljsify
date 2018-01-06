@@ -130,10 +130,10 @@ void Qmljsify::build()
 
 void Qmljsify::create()
 {
-    QString file = ":/Qmljsify/WrapperCreator.qml";
+    QUrl url("qrc:/Qmljsify/WrapperCreator.qml");
 
     QQmlApplicationEngine engine;
-    engine.load(file);
+    engine.load(url);
 
     QObject* script = engine.rootObjects().first();
 

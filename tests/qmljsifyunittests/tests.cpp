@@ -116,6 +116,7 @@ void Tests::test_lodashMerge()
     QString buildFolder = realpath_strip(pwd(), "build");
     QString outputFolder = pwd();
 
+    QString origJs = realpath_strip(pwd() , "lodash.merge.orig.js");
     QString js = realpath_strip(pwd() , "lodash.merge.js");
 
     QString package = "lodash.merge@4.0.0";
@@ -138,6 +139,9 @@ void Tests::test_lodashMerge()
     jsify.create();
 
     QVERIFY(cat(js).indexOf("var lodashMerge") >= 0);
+
+    cp("-v", origJs, realpath_strip(SRCDIR, "samples/"));
+    cp("-v", js, realpath_strip(SRCDIR, "samples/"));
 }
 
 
