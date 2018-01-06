@@ -43,7 +43,10 @@ public:
 
     void parsePackageString(const QString& text);
 
+    static QString queryPackageVersion(const QString& folder, const QString& packageName);
+
 private:
+
     QString m_buildFolder;
 
     QString m_package;

@@ -21,27 +21,6 @@ void printException(QJSValue value)
     }
 }
 
-QVariantMap parse(const QString &text) {
-    QJsonParseError error;
-    QJsonDocument doc = QJsonDocument::fromJson(text.toUtf8(),&error);
-
-    if (error.error != QJsonParseError::NoError) {
-        qWarning() << "JSON::parse() error: "<< error.errorString();
-    }
-
-    return doc.object().toVariantMap();
-}
-
-static QString obtainPackageVersion(const QString& folder, const QString& packageName) {
-    QString path = realpath_strip(folder, "node_modules", packageName, "package.json");
-
-    QString content = cat(path);
-
-    QVariantMap map = parse(content);
-
-    return map["version"].toString();
-}
-
 Tests::Tests(QObject *parent) : QObject(parent)
 {
     auto ref = [=]() {
@@ -162,8 +141,11 @@ void Tests::test_lodashMerge()
     jsify.create();
 
     QVERIFY(cat(js).indexOf("var lodashMerge") >= 0);
+    QVERIFY(cat(js).indexOf("4.5.0") >= 0);
 
-    QCOMPARE(obtainPackageVersion(buildFolder, "lodash.merge") , QString("4.5.0"));
+    QVERIFY(cat(origJs).indexOf("4.5.0") >= 0);
+
+    QCOMPARE(Qmljsify::queryPackageVersion(buildFolder, "lodash.merge") , QString("4.5.0"));
 
     cp("-v", origJs, realpath_strip(SRCDIR, "samples/"));
     cp("-v", js, realpath_strip(SRCDIR, "samples/"));

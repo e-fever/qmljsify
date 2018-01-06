@@ -86,7 +86,7 @@ Known Issues
 
 2. setTimeout is not wrapped.
 
-3. It can't handle a library with only a single function yet. (e.g left-pad)
+---3. It can't handle a library with only a single function yet. (e.g left-pad)---
 
 4. It may not works for some npm package.
 
