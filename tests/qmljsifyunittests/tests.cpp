@@ -2,6 +2,8 @@
 #include <QTest>
 #include <Automator>
 #include <QtShell>
+#include <QJsonObject>
+#include <QJsonParseError>
 #include "tests.h"
 #include "qmljsify.h"
 
@@ -17,6 +19,27 @@ void printException(QJSValue value)
                           .arg(value.property("message").toString());
         qWarning() << message;
     }
+}
+
+QVariantMap parse(const QString &text) {
+    QJsonParseError error;
+    QJsonDocument doc = QJsonDocument::fromJson(text.toUtf8(),&error);
+
+    if (error.error != QJsonParseError::NoError) {
+        qWarning() << "JSON::parse() error: "<< error.errorString();
+    }
+
+    return doc.object().toVariantMap();
+}
+
+static QString obtainPackageVersion(const QString& folder, const QString& packageName) {
+    QString path = realpath_strip(folder, "node_modules", packageName, "package.json");
+
+    QString content = cat(path);
+
+    QVariantMap map = parse(content);
+
+    return map["version"].toString();
 }
 
 Tests::Tests(QObject *parent) : QObject(parent)
@@ -119,7 +142,7 @@ void Tests::test_lodashMerge()
     QString origJs = realpath_strip(pwd() , "lodash.merge.orig.js");
     QString js = realpath_strip(pwd() , "lodash.merge.js");
 
-    QString package = "lodash.merge@4.0.0";
+    QString package = "lodash.merge@4.5.0";
 
     jsify.setMinifyEnabled(false);
     jsify.setOutputFolder(outputFolder);
@@ -128,7 +151,7 @@ void Tests::test_lodashMerge()
     jsify.parsePackageString(package);
 
     QCOMPARE(jsify.package(), QString("lodash.merge"));
-    QCOMPARE(jsify.packageVersion(), QString("4.0.0"));
+    QCOMPARE(jsify.packageVersion(), QString("4.5.0"));
 
     jsify.prepare();
 
@@ -139,6 +162,8 @@ void Tests::test_lodashMerge()
     jsify.create();
 
     QVERIFY(cat(js).indexOf("var lodashMerge") >= 0);
+
+    QCOMPARE(obtainPackageVersion(buildFolder, "lodash.merge") , QString("4.5.0"));
 
     cp("-v", origJs, realpath_strip(SRCDIR, "samples/"));
     cp("-v", js, realpath_strip(SRCDIR, "samples/"));

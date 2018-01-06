@@ -109,7 +109,12 @@ void Qmljsify::fetch()
 {
     QString npm = which("npm");
 
-    execute(m_buildFolder, npm, QStringList() << "install" << "--save" << m_package);
+    QString package = m_package;
+    if (!m_packageVersion.isEmpty()) {
+        package = m_package + "@" + m_packageVersion;
+    }
+
+    execute(m_buildFolder, npm, QStringList() << "install" << "--save" << "--save-exact" << package);
     execute(m_buildFolder, npm,  QStringList() << "install");
 }
 
