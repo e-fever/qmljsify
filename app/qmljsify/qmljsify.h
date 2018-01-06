@@ -35,6 +35,8 @@ public:
     QString outputFolder() const;
     void setOutputFolder(const QString &outputFolder);
 
+    static QString normalizeFunctionName(const QString& package);
+
 private:
     QString m_buildFolder;
 

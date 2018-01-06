@@ -27,6 +27,12 @@ Tests::Tests(QObject *parent) : QObject(parent)
     Q_UNUSED(ref);
 }
 
+void Tests::test_normalizeFunctionName()
+{
+    QCOMPARE(Qmljsify::normalizeFunctionName("left-pad"), QString("leftPad"));
+    QCOMPARE(Qmljsify::normalizeFunctionName("lodash.merge"), QString("lodashMerge"));
+}
+
 void Tests::test_prepare()
 {
     Qmljsify jsify;
@@ -73,6 +79,34 @@ void Tests::test_create()
 
     QVERIFY(QFile::exists(origJs));
     QVERIFY(cat(origJs).size() > 0);
+}
+
+void Tests::test_leftpad()
+{
+    Qmljsify jsify;
+
+    QString buildFolder = realpath_strip(pwd(), "build");
+    QString outputFolder = pwd();
+
+    QString js = realpath_strip(pwd() , "left-pad.js");
+
+    QString package = "left-pad";
+
+    jsify.setMinifyEnabled(false);
+    jsify.setOutputFolder(outputFolder);
+
+    jsify.setBuildFolder(buildFolder);
+    jsify.setPackage(package);
+
+    jsify.prepare();
+
+    jsify.fetch();
+
+    jsify.build();
+
+    jsify.create();
+
+    QVERIFY(cat(js).indexOf("var leftPad") >= 0);
 }
 
 

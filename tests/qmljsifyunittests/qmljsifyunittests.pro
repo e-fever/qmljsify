@@ -14,7 +14,7 @@ ROOTDIR = $$PWD/../../
 include(vendor/vendor.pri)
 include($$ROOTDIR/app/qmljsify/qmljsify.pri)
 
-DEFINES += QUICK_TEST_SOURCE_DIR=\\\"$$PWD/\\\"
+DEFINES += QUICK_TEST_SOURCE_DIR=\\\"$$PWD/qmltests\\\"
 
 DISTFILES +=     qpm.json     qmltests/tst_QmlTests.qml \
     samples/sprintf.js \

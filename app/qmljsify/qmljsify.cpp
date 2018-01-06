@@ -58,6 +58,18 @@ static void execute(QString cwd, QString command , QStringList arguments) {
     }
 }
 
+static void append(QString fileName , QString content) {
+
+    QFile file(fileName);
+
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Append)) {
+        qWarning() << file.errorString();
+        return;
+    }
+
+    file.write(content.toUtf8());
+}
+
 Qmljsify::Qmljsify()
 {
     m_minifyEnabled = false;
@@ -87,6 +99,7 @@ void Qmljsify::prepare()
         QString content = cat(inputPath);
 
         content = content.replace("%{PACKAGE}", m_package);
+        content = content.replace("%{FUNCTION}", normalizeFunctionName(m_package));
 
         writeToFile(outputPath, content);
     }
@@ -130,7 +143,7 @@ void Qmljsify::create()
 
     cp(bundle, orig);
 
-    qDebug().noquote() <<  QtShell::basename(orig) << " saved";
+    qDebug().noquote() <<  QtShell::basename(orig) << " saved";   
 
     QVariant result;
 
@@ -165,6 +178,19 @@ QString Qmljsify::outputFolder() const
 void Qmljsify::setOutputFolder(const QString &outputFolder)
 {
     m_outputFolder = outputFolder;
+}
+
+QString Qmljsify::normalizeFunctionName(const QString &package)
+{
+    QStringList token = package.split(QRegExp("[.-]"));
+
+    for (int i = 1 ; i < token.size();i++) {
+        QString str = token[i];
+        str[0] = str[0].toUpper();
+        token[i] = str;
+    }
+
+    return token.join("");
 }
 
 QString Qmljsify::package() const

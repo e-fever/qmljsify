@@ -33,16 +33,12 @@ int main(int argc, char *argv[])
     TestRunner runner;
     runner.addImportPath("qrc:///");
     runner.add<Tests>();
-    runner.add(QString(SRCDIR) + "qmltests");
+    runner.add(QString(QUICK_TEST_SOURCE_DIR));
 
     int waitTime = 100;
     if (app.arguments().size() != 1) {
         waitTime = 60000;
     }
-
-    QVariantMap config;
-    config["waitTime"] = waitTime;
-    runner.setConfig(config);
 
     bool error = runner.exec(app.arguments());
 
