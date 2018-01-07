@@ -10,7 +10,7 @@ function create(source, fileName) {
 
     if (status.status !== 0) {
         console.warn("Failed to load: " + source);
-        console.warn(status.exception);
+        console.warn(status.exception.lineNumber + ":" + status.exception);
         return;
     }
 
