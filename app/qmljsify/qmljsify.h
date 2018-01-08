@@ -45,6 +45,8 @@ public:
 
     static QString queryPackageVersion(const QString& folder, const QString& packageName);
 
+    static bool validate(const QString& file);
+
 private:
 
     QString m_buildFolder;

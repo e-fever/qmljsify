@@ -4,6 +4,10 @@ import "./wrappercreator.js" as Script
 QtObject {
     objectName: "Main"
 
+    function validate(source) {
+        return Script.validate(source);
+    }
+
     function create(source, fileName) {
         return Script.create(source, fileName);
     }

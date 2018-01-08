@@ -251,7 +251,26 @@ QString Qmljsify::queryPackageVersion(const QString &folder, const QString &pack
     QVariantMap map = parse(content);
 
     return map["version"].toString();
+}
 
+bool Qmljsify::validate(const QString &file)
+{
+    QUrl url("qrc:/Qmljsify/WrapperCreator.qml");
+
+    QQmlApplicationEngine engine;
+    engine.load(url);
+
+    QObject* script = engine.rootObjects().first();
+
+    QVariant result;
+
+    QMetaObject::invokeMethod(script,
+                              "validate",
+                              Qt::DirectConnection,
+                              Q_RETURN_ARG(QVariant, result),
+                              Q_ARG(QVariant, QUrl::fromLocalFile(file).toString()));
+
+    return result.toBool();
 }
 
 QString Qmljsify::package() const

@@ -138,6 +138,8 @@ void Tests::test_lodashMerge()
 
     jsify.build();
 
+    QVERIFY(jsify.validate(realpath_strip(buildFolder, "dist/bundle.js")));
+
     jsify.create();
 
     QVERIFY(cat(js).indexOf("var lodashMerge") >= 0);
