@@ -109,10 +109,7 @@ Try --no-minify
 
 2) SyntaxError: Expected token `identifier`
 
-Basically, I have no idea what may trigger this problem. 
-It is probably a problem in Qt's JavaScript engine.
-
-You may try to use `--no-minify`, if it is still not working and that package is small and tiny, please report to me. It may be used to investigate the problem
+The Javascript loaded by `Qt.include` could not use "as" as variable name. The minified Javascript may contains such kind of  variable so it will raise the exception. You may try to use `--no-minify` argument to create a non-minified QML friendly Javascript .
 
 Brainstorming
 ------------
@@ -126,3 +123,5 @@ Proposed features:
 3. --function name - Set the function name of library that only provide a single function
 
 4. Break down the "convert" function into multiple steps.
+
+5. --retry-minify - Try minify for few more times unless it don't use any variable name with `as'
