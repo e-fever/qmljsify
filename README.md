@@ -22,6 +22,16 @@ Build Instruction
 
 p.s Windows is not working yet.
 
+Build Instruction (Docker)
+==========================
+
+
+```
+	cd qmljsify
+	docker-compose build
+	docker-compose qmljsify run bash
+```
+
 Prerequisites
 =============
 
