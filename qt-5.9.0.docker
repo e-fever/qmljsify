@@ -24,7 +24,7 @@ RUN echo "export PATH=/opt/Qt/5.9/gcc_64/bin:$PATH" >> /root/.bashrc
 
 RUN go get qpm.io/qpm && cp /root/go/bin/qpm /usr/bin && rm -rf /root/go
 
-RUN npm install -g webpack-cli webpack
+RUN npm install -g webpack@3.10.0
 
 ADD app/qmljsify /src
 

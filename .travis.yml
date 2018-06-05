@@ -9,7 +9,7 @@ before_install:
     - export PATH=`pwd`/gosrc/bin:$PATH
     - go get qpm.io/qpm
     - sh -e /etc/init.d/xvfb start
-    - npm install -g webpack
+    - npm install -g webpack@3.10.0
 script:
     - git clone https://github.com/benlau/qtci.git
     - source qtci/path.env
