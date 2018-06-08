@@ -21,6 +21,10 @@ var config = {
     contentBase: __dirname + "/build",
     hot: true
   },
+  node: {
+    dns: "mock",
+    net: "mock"
+  },
   plugins: []
 };
 

@@ -29,3 +29,5 @@ RUN npm install -g webpack@3.10.0
 ADD app/qmljsify /src
 
 RUN export PATH=/opt/Qt/5.9/gcc_64/bin:$PATH && cd /src && qpm install && qmake && make && cp qmljsify /usr/bin
+
+ADD convert.sh /usr/bin/convert

@@ -53,7 +53,7 @@ static void execute(QString cwd, QString command , QStringList arguments) {
 
     process.start(command , arguments);
 
-    process.waitForFinished();
+    process.waitForFinished(-1);
 
     if (process.exitStatus() == QProcess::CrashExit) {
         qDebug() << command << process.errorString();
