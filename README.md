@@ -12,6 +12,12 @@ It is still a prototype software. Use it at your own risk.
 Build Instruction
 =================
 
+Prerequisite:
+
+- webpack < 4.0
+- npm 
+- nodejs
+
 ```
   cd app/qmljsify
   qpm install
@@ -25,10 +31,17 @@ p.s Windows is not working yet.
 Build Instruction (Docker)
 ==========================
 
+In case you are familiar with Docker, you may build a Docker image with qmljsify. That would save your time in getting all the required dependencies.
+
 ```
 	cd qmljsify
 	docker-compose build
-	docker-compose qmljsify run bash
+```
+
+Usage:
+
+```
+	docker-compose qmljsify run --rm convert npm_package
 ```
 
 Prerequisites
