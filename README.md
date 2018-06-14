@@ -41,7 +41,7 @@ In case you are familiar with Docker, you may build a Docker image with qmljsify
 Usage:
 
 ```
-	docker-compose qmljsify run --rm convert npm_package
+	docker-compose qmljsify --rm run convert npm_package
 ```
 
 Prerequisites
