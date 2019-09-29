@@ -5,7 +5,7 @@ CONFIG += c++11
 CONFIG-=app_bundle
 CONFIG -= qtquickcompiler
 
-QT += quick qml multimedia
+QT += quick qml
 
 include(qmljsify.pri)
 

@@ -1,0 +1,1 @@
+alias qmljsify='docker run --rm -v $PWD:/data --user $(id -u):$(id -g) -i -t qmljsify'
