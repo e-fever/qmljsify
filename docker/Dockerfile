@@ -10,8 +10,6 @@ RUN apk add --update --no-cache bash \
     npm install -g webpack@3.10.0 && \
     go get qpm.io/qpm && cp /root/go/bin/qpm /usr/bin && rm -rf /root/go
 
-ARG V=2
-
 ADD app/qmljsify /src
 
 RUN export PATH=/usr/lib/qt5/bin:$PATH && cd /src && qpm install && qmake && make && cp qmljsify /usr/bin && make clean

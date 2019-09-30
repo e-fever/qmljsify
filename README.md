@@ -6,48 +6,19 @@ It is still a prototype software. Use it at your own risk.
 **Proven Working Packages**
 
     fecha (Lightweight version of moment)
-    lodash(--no-minify) 
+    lodash(--no-minify)
     sprintf
 
-Build Instruction
+Installation Instruction
 =================
 
-Prerequisite:
-
-- webpack < 4.0
-- npm 
-- nodejs
+The qmljsify is available in Docker Hub. You may pull the docker image directly:
 
 ```
-  cd app/qmljsify
-  qpm install
-  qmake
-  make 
-  #Then copy qmljsify to your favor path
+docker pull benlau/qmljsify
+docker tag benlau/qmljsify qmljsify
+alias qmljsify='docker run --rm -v $PWD:/data --user $(id -u):$(id -g) -i -t qmljsify'
 ```
-
-p.s Windows is not working yet.
-
-Build Instruction (Docker)
-==========================
-
-In case you are familiar with Docker, you may build a Docker image with qmljsify. That would save your time in getting all the required dependencies.
-
-```
-	cd qmljsify
-	docker-compose build
-```
-
-Usage:
-
-```
-	docker-compose run --rm qmljsify convert npm_package
-```
-
-Prerequisites
-=============
-
-You must have the `npm` and `webpack` binary be installed and searchable in PATH environment variable.
 
 Usage
 =====
@@ -66,7 +37,7 @@ Arguments:
 ```
 
 
-Example: 
+Example:
 
 ```
   qmljsify convert sprintf
@@ -111,6 +82,36 @@ Known Issues
 3. It may not works for some npm package.
 
 Remarks: NPM library with only a single function is supported noe (e.g left-pad)
+
+Build Instruction
+=================
+
+Prerequisite:
+
+- webpack < 4.0
+- npm
+- nodejs
+
+```
+  cd app/qmljsify
+  qpm install
+  qmake
+  make
+  #Then copy qmljsify to your favor path
+```
+
+p.s Windows is not working yet.
+
+Build Instruction (Docker)
+==========================
+
+
+```
+cd qmljsify/docker
+./build-docker-images.sh
+alias qmljsify='docker run --rm -v $PWD:/data --user $(id -u):$(id -g) -i -t qmljsify'
+```
+
 
 TroubleShooting
 ===============
