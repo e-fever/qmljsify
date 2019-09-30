@@ -25,8 +25,18 @@ var config = {
     dns: "mock",
     net: "mock"
   },
+  module: {
+    rules: [
+      {
+         use: {
+            loader:'babel-loader'
+         },
+         test: /\.js$/
+      }
+    ]
+  },
   plugins: []
-};
+}
 
 module.exports = function(env) {
 
@@ -42,5 +52,5 @@ module.exports = function(env) {
        );
    }
 
-    return config;
+   return config;
 }

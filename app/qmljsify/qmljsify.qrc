@@ -5,5 +5,7 @@
         <file>Qmljsify/wrappercreator.js</file>
         <file>Qmljsify/WrapperCreator.qml</file>
         <file>Qmljsify/templates/package.json</file>
+        <file>Qmljsify/templates/.babelrc</file>
+        <file>Qmljsify/templates/package-lock.json</file>
     </qresource>
 </RCC>

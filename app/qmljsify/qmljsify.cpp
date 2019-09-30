@@ -104,8 +104,7 @@ void Qmljsify::setBuildFolder(const QString &buildFolder)
 
 void Qmljsify::prepare()
 {
-    QStringList files;
-    files << "index.js" << "webpack.config.js" << "package.json";
+    QStringList files = QStringList{"index.js", "webpack.config.js", "package.json", ".babelrc", "package-lock.json"};
 
     mkdir("-p", m_buildFolder);
 
@@ -148,9 +147,6 @@ void Qmljsify::build()
     }
 
     execute(m_buildFolder, webpack, arguments);
-
-    qDebug() << QtShell::find(m_buildFolder);
-
 }
 
 void Qmljsify::create()
