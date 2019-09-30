@@ -49,13 +49,13 @@ static void execute(QString cwd, QString command , QStringList arguments) {
     process.setProcessEnvironment(env);
     process.setWorkingDirectory(cwd);
 
-    process.setProcessChannelMode(QProcess::ForwardedOutputChannel);
+    process.setProcessChannelMode(QProcess::MergedChannels);
 
     process.start(command , arguments);
 
     process.waitForFinished(-1);
 
-    if (process.exitStatus() == QProcess::CrashExit) {
+    if (process.exitStatus() != QProcess::NormalExit || process.exitCode() != 0) {
         qDebug() << command << process.errorString();
     }
 }
@@ -131,13 +131,13 @@ void Qmljsify::fetch()
         package = m_package + "@" + m_packageVersion;
     }
 
-    execute(m_buildFolder, npm, QStringList() << "install" << "--save" << "--save-exact" << package);
+    execute(m_buildFolder, npm, QStringList() << "install" << "--no-progress" << "--save" << "--save-exact" << package);
     execute(m_buildFolder, npm,  QStringList() << "install");
 }
 
 void Qmljsify::build()
 {
-    QString webpack = which("webpack");
+    QString webpack = "./node_modules/.bin/webpack";
     if (webpack.isEmpty()) {
         qWarning() << "webpack command not found. Please check your PATH environment variable.";
     }
@@ -148,6 +148,9 @@ void Qmljsify::build()
     }
 
     execute(m_buildFolder, webpack, arguments);
+
+    qDebug() << QtShell::find(m_buildFolder);
+
 }
 
 void Qmljsify::create()
@@ -166,7 +169,7 @@ void Qmljsify::create()
 
     cp(bundle, origJs);
 
-    qDebug().noquote() <<  QtShell::basename(origJs) << " saved";
+    qDebug().noquote() <<  QtShell::basename(origJs) << "saved";
 
     QVariant result;
 
@@ -180,7 +183,7 @@ void Qmljsify::create()
     QString output =  realpath_strip(m_outputFolder, m_package + ".js");
     writeToFile(output, result.toString());
 
-    qDebug().noquote() << QtShell::basename(output) << " saved";
+    qDebug().noquote() << QtShell::basename(output) << "saved";
 
     QString version = queryPackageVersion(m_buildFolder, m_package);
 

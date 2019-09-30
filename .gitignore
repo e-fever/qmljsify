@@ -90,4 +90,7 @@ qmlimport.path
 *.qmlc
 *.jsc
 
+!build-docker-images.sh
+**/build-*
+node_modules
 

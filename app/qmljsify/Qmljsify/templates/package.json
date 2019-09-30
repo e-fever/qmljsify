@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "webpack": "2.5.1"
+    "webpack": "2.5.1",
+    "webpack-cli": "3.3.9"
   },
   "devDependencies": {},
   "scripts": {
