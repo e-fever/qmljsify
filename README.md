@@ -12,7 +12,7 @@ It is still a prototype software. Use it at your own risk.
 Installation Instruction
 =================
 
-The qmljsify is available in Docker Hub. You may pull the docker image directly:
+A pre-built version of qmljsify is available in Docker Hub. You may pull the docker image directly:
 
 ```
 docker pull benlau/qmljsify
@@ -75,13 +75,13 @@ SPrintf.sprintf("%d %d", 1 , 2);
 Known Issues
 ============
 
-1. It don't works on Windows.
+1. It doesn't work on Windows.
 
 2. setTimeout is not wrapped.
 
 3. It may not works for some npm package.
 
-Remarks: NPM library with only a single function is supported noe (e.g left-pad)
+Remarks: NPM library with only a single function is supported now (e.g. left-pad)
 
 Build Instruction
 =================
@@ -132,7 +132,7 @@ Try --no-minify
 
 2) SyntaxError: Expected token `identifier`
 
-The Javascript loaded by `Qt.include` could not use "as" as variable name. The minified Javascript may contains such kind of  variable so it will raise the exception. You may try to use `--no-minify` argument to create a non-minified QML friendly Javascript .
+The Javascript loaded by `Qt.include` could not use "as" as a variable name. The minified Javascript may contain such kind of variable so it will raise the exception. You may try to use the `--no-minify` argument to create a non-minified QML friendly Javascript.
 
 Brainstorming
 ------------
@@ -143,8 +143,8 @@ Proposed features:
 
 2. Handle library with only a single function
 
-3. --function name - Set the function name of library that only provide a single function
+3. --function name - Set the function name of the library that only provides a single function
 
 4. Break down the "convert" function into multiple steps.
 
-5. --retry-minify - Try minify for few more times unless it don't use any variable name with `as'
+5. --retry-minify - Try to minify for few more times unless it doesn't use any variable name with `as'
